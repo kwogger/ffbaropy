@@ -21,6 +21,7 @@ REGEX_X_OFFSET = -16
 REGEX_Y_OFFSET = 152
 LIGHT_X_OFFSET = -15
 LIGHT_Y_OFFSET = 152
+MAX_FRAMES = 16777216
 
 template = {
     'filename': 'oled_%s' % (re.match('^(.*)\\..{3}$', INPUT_PATH).group(1),),
@@ -211,6 +212,7 @@ print('> Writing video data')
 template['vid_data'] = ''.join(
     [px_dict[px] for px in struct.iter_unpack('BBB', rgb_raw)])
 template['vid_data_length'] = len(template['vid_data'])
+assert template['vid_data_length'] <= MAX_FRAMES
 
 print('> Writing dictionary')
 template['px_lib'] = ''.join(
@@ -270,7 +272,7 @@ template['light_comp'] = [light.template() for light in lights]
 template['wire'] = [wire.template() for wire in wires]
 
 print('> Writing item assembly')
-with open('%s.xml' % template['filename'], 'w') as f_out:
+with open('build/%s.xml' % template['filename'], 'w') as f_out:
     with open(ITEM_ASSEMBLY_TEMPLATE, 'r') as f_template:
         f_out.write(chevron.render(f_template, template))
 
