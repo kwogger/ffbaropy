@@ -5,7 +5,7 @@ import ffmpeg
 import re
 import struct
 
-INPUT_PATH = 'baro_trailer.mp4'
+INPUT_PATH = 'bee.mp4'
 PROOF_PATH = 'proof.mp4'
 DICT_PATTERN_PATH = 'dict.txt'
 ITEM_ASSEMBLY_TEMPLATE = 'oled.mustache'
@@ -17,11 +17,13 @@ FRAMERATE = 8
 RESERVED_XML_CHARS = '<>&"\''
 ALPHABET = [chr(i) for i in range(32, 127) if chr(i) not in RESERVED_XML_CHARS]
 RESERVED_REGEX_CHARS = '.+*?^$()[]{}|\\'
-REGEX_X_OFFSET = -16
-REGEX_Y_OFFSET = 152
-LIGHT_X_OFFSET = -15
-LIGHT_Y_OFFSET = 152
+REGEX_X_OFFSET = -192
+REGEX_Y_OFFSET = 103
+LIGHT_X_OFFSET = -192
+LIGHT_Y_OFFSET = 103
 MAX_FRAMES = 16777216
+FRAME_SIZE = WIDTH * HEIGHT
+BUFFER_SIZE = FRAMERATE * FRAME_SIZE * 60
 
 template = {
     'filename': 'oled_%s' % (re.match('^(.*)\\..{3}$', INPUT_PATH).group(1),),
@@ -29,13 +31,18 @@ template = {
         'A %dx%d OLED screen with a video generated from %s'
         % (WIDTH, HEIGHT, INPUT_PATH)),
     'frame_rate': FRAMERATE,
-    'frame_length': WIDTH * HEIGHT,
-    'frame_pattern': '^(?<out>.{%s})' % (WIDTH * HEIGHT, ),
-    'frame_remover_pattern': '^.{%s}(?<out>.*)' % (WIDTH * HEIGHT, ),
+    'frame_length': FRAME_SIZE,
+    'frame_pattern': '^(?<out>.{%d})' % FRAME_SIZE,
+    'frame_remover_pattern': '^.{%d}(?<out>.+)' % FRAME_SIZE,
+    'buffer_length': BUFFER_SIZE,
+    'buffer_pattern': '^(?<out>.{%d,%d})' % (FRAME_SIZE, BUFFER_SIZE),
+    'buffer_remover_pattern': '^.{%d}(?<out>.+)' % BUFFER_SIZE,
+    'frame_empty_pattern': '^.{%d}$' % FRAME_SIZE,
+    'caption_enabled': False,
 }
 
 
-COMPONENT_ID_OFFSET = 23
+COMPONENT_ID_OFFSET = 61
 relays = []
 regexs = []
 lights = []
@@ -98,7 +105,7 @@ class Component:
 
 class Concat(Component):
     def __init__(self):
-        super().__init__(-48, 119, 15, 14)
+        super().__init__(-224, 71, 15, 14)
         self.signal_out = [self.node('signal_out') for _ in range(5)]
 
     def template(self):
@@ -107,7 +114,7 @@ class Concat(Component):
 
 class Relay(Component):
     def __init__(self):
-        super().__init__(-32, 136, 15, 13)
+        super().__init__(-207, 88, 15, 13)
         self.signal_in1 = self.node('signal_in1')
         self.signal_in2 = self.node('signal_in2')
         self.signal_out1 = [self.node('signal_out1') for _ in range(5)]
@@ -212,7 +219,7 @@ print('> Writing video data')
 template['vid_data'] = ''.join(
     [px_dict[px] for px in struct.iter_unpack('BBB', rgb_raw)])
 template['vid_data_length'] = len(template['vid_data'])
-assert template['vid_data_length'] <= MAX_FRAMES
+assert len(template['vid_data']) <= (MAX_FRAMES * WIDTH * HEIGHT)
 
 print('> Writing dictionary')
 template['px_lib'] = ''.join(
