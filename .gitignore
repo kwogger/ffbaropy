@@ -1,6 +1,6 @@
 # Project specific
 *.mp4
-
+*.srt
 
 # PYTHON SPECIFIC
 # from https://github.com/github/gitignore/blob/master/Python.gitignore

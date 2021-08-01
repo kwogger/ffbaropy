@@ -93,8 +93,8 @@
       </output>
     </ConnectionPanel>
   </Item>
-  <Item name="" identifier="signalcheckcomponent" ID="6" rect="-272,72,15,13" noninteractable="False" nonplayerteaminteractable="False" allowswapping="True" rotation="0" scale="0.5" spritecolor="255,255,255,255" inventoryiconcolor="255,255,255,255" containercolor="255,255,255,255" condition="100" invulnerabletodamage="False" tags="smallitem,logic" displaysidebysidewhenlinked="False" disallowedupgrades="" spritedepth="0.8" hiddeningame="False">
-    <SignalCheckComponent maxoutputlength="{{vid_data_length}}" output="" falseoutput="&amp;" targetsignal="1" pickingtime="0" canbepicked="False" allowingameediting="True" msg="" />
+  <Item name="" identifier="signalcheckcomponent" ID="6" rect="-272,72,15,13" noninteractable="False" nonplayerteaminteractable="False" allowswapping="True" rotation="0" scale="0.5" spritecolor="255,0,255,255" inventoryiconcolor="255,255,255,255" containercolor="255,255,255,255" condition="100" invulnerabletodamage="False" tags="smallitem,logic" displaysidebysidewhenlinked="False" disallowedupgrades="" spritedepth="0.8" hiddeningame="False">
+    <SignalCheckComponent maxoutputlength="{{vid_data_length}}" output="" falseoutput="&amp;" targetsignal="1" pickingtime="0" canbepicked="False" allowingameediting="False" msg="" />
     <Holdable attached="True" holdpos="0,0" holdangle="0" swingamount="0,0" swingspeed="0" swingwhenholding="False" swingwhenaiming="False" swingwhenusing="False" pickingtime="5" canbepicked="True" allowingameediting="True" msg="ItemMsgDetachWrench">
       <requireditem items="wrench" type="Equipped" optional="false" ignoreineditor="false" excludebroken="true" />
     </Holdable>
@@ -145,8 +145,8 @@
       </output>
     </ConnectionPanel>
   </Item>
-  <Item name="" identifier="signalcheckcomponent" ID="9" rect="-256,56,15,13" noninteractable="False" nonplayerteaminteractable="False" allowswapping="True" rotation="0" scale="0.5" spritecolor="255,255,255,255" inventoryiconcolor="255,255,255,255" containercolor="255,255,255,255" condition="100" invulnerabletodamage="False" tags="smallitem,logic" displaysidebysidewhenlinked="False" disallowedupgrades="" spritedepth="0.8" hiddeningame="False">
-    <SignalCheckComponent maxoutputlength="{{buffer_length}}" output="" falseoutput="" targetsignal="1" pickingtime="0" canbepicked="False" allowingameediting="True" msg="" />
+  <Item name="" identifier="signalcheckcomponent" ID="9" rect="-256,56,15,13" noninteractable="False" nonplayerteaminteractable="False" allowswapping="True" rotation="0" scale="0.5" spritecolor="255,0,255,255" inventoryiconcolor="255,255,255,255" containercolor="255,255,255,255" condition="100" invulnerabletodamage="False" tags="smallitem,logic" displaysidebysidewhenlinked="False" disallowedupgrades="" spritedepth="0.8" hiddeningame="False">
+    <SignalCheckComponent maxoutputlength="{{buffer_length}}" output="" falseoutput="" targetsignal="1" pickingtime="0" canbepicked="False" allowingameediting="False" msg="" />
     <Holdable attached="True" holdpos="0,0" holdangle="0" swingamount="0,0" swingspeed="0" swingwhenholding="False" swingwhenaiming="False" swingwhenusing="False" pickingtime="5" canbepicked="True" allowingameediting="True" msg="ItemMsgDetachWrench">
       <requireditem items="wrench" type="Equipped" optional="false" ignoreineditor="false" excludebroken="true" />
     </Holdable>
@@ -212,8 +212,8 @@
       </output>
     </ConnectionPanel>
   </Item>
-  <Item name="" identifier="signalcheckcomponent" ID="13" rect="-223,39,15,13" noninteractable="False" nonplayerteaminteractable="False" allowswapping="True" rotation="0" scale="0.5" spritecolor="255,255,255,255" inventoryiconcolor="255,255,255,255" containercolor="255,255,255,255" condition="100" invulnerabletodamage="False" tags="smallitem,logic" displaysidebysidewhenlinked="False" disallowedupgrades="" spritedepth="0.8" hiddeningame="False">
-    <SignalCheckComponent maxoutputlength="{{px_lib_length}}" output="{{px_lib}}" falseoutput="" targetsignal="1" pickingtime="0" canbepicked="False" allowingameediting="True" msg="" />
+  <Item name="" identifier="signalcheckcomponent" ID="13" rect="-223,39,15,13" noninteractable="False" nonplayerteaminteractable="False" allowswapping="True" rotation="0" scale="0.5" spritecolor="255,0,255,255" inventoryiconcolor="255,255,255,255" containercolor="255,255,255,255" condition="100" invulnerabletodamage="False" tags="smallitem,logic" displaysidebysidewhenlinked="False" disallowedupgrades="" spritedepth="0.8" hiddeningame="False">
+    <SignalCheckComponent maxoutputlength="{{px_lib_length}}" output="{{px_lib}}" falseoutput="" targetsignal="1" pickingtime="0" canbepicked="False" allowingameediting="False" msg="" />
     <Holdable attached="True" holdpos="0,0" holdangle="0" swingamount="0,0" swingspeed="0" swingwhenholding="False" swingwhenaiming="False" swingwhenusing="False" pickingtime="5" canbepicked="True" allowingameediting="True" msg="ItemMsgDetachWrench">
       <requireditem items="wrench" type="Equipped" optional="false" ignoreineditor="false" excludebroken="true" />
     </Holdable>
@@ -352,6 +352,7 @@
       </input>
       <input name="set_output">
         <link w="49" />
+        <link w="61" />
       </input>
       <input name="set_targetsignal" />
       <output name="signal_out">
@@ -374,11 +375,12 @@
       </input>
       <output name="signal_out">
         <link w="51" />
+        <link w="61" />
       </output>
     </ConnectionPanel>
   </Item>
-  <Item name="" identifier="signalcheckcomponent" ID="37" rect="-288,103,15,13" noninteractable="False" nonplayerteaminteractable="False" allowswapping="True" rotation="0" scale="0.5" spritecolor="255,255,255,255" inventoryiconcolor="255,255,255,255" containercolor="255,255,255,255" condition="100" invulnerabletodamage="False" tags="smallitem,logic" displaysidebysidewhenlinked="False" disallowedupgrades="" spritedepth="0.8" hiddeningame="False">
-    <SignalCheckComponent maxoutputlength="200" output="CAPTION_DATA" falseoutput="" targetsignal="0" pickingtime="0" canbepicked="False" allowingameediting="True" msg="" />
+  <Item name="" identifier="signalcheckcomponent" ID="37" rect="-288,103,15,13" noninteractable="False" nonplayerteaminteractable="False" allowswapping="True" rotation="0" scale="0.5" spritecolor="255,0,255,255" inventoryiconcolor="255,255,255,255" containercolor="255,255,255,255" condition="100" invulnerabletodamage="False" tags="smallitem,logic" displaysidebysidewhenlinked="False" disallowedupgrades="" spritedepth="0.8" hiddeningame="False">
+    <SignalCheckComponent maxoutputlength="{{caption_data_length}}" output="{{caption_data}}" falseoutput="" targetsignal="0" pickingtime="0" canbepicked="False" allowingameediting="False" msg="" />
     <Holdable attached="True" holdpos="0,0" holdangle="0" swingamount="0,0" swingspeed="0" swingwhenholding="False" swingwhenaiming="False" swingwhenusing="False" pickingtime="5" canbepicked="True" allowingameediting="True" msg="ItemMsgDetachWrench">
       <requireditem items="wrench" type="Equipped" optional="false" ignoreineditor="false" excludebroken="true" />
     </Holdable>
@@ -403,18 +405,18 @@
     <ConnectionPanel locked="False" pickingtime="0" canbepicked="False" allowingameediting="True" msg="ItemMsgRewireScrewdriver">
       <requireditem items="screwdriver" type="Equipped" optional="false" ignoreineditor="false" excludebroken="true" />
       <input name="signal_in1">
-        <link w="60" />
+        <link w="51" />
       </input>
       <input name="signal_in2">
-        <link w="51" />
+        <link w="60" />
       </input>
       <output name="signal_out">
         <link w="53" />
       </output>
     </ConnectionPanel>
   </Item>
-  <Item name="" identifier="signalcheckcomponent" ID="39" rect="-272,103,15,13" noninteractable="False" nonplayerteaminteractable="False" allowswapping="True" rotation="0" scale="0.5" spritecolor="255,255,255,255" inventoryiconcolor="255,255,255,255" containercolor="255,255,255,255" condition="100" invulnerabletodamage="False" tags="smallitem,logic" displaysidebysidewhenlinked="False" disallowedupgrades="" spritedepth="0.8" hiddeningame="False">
-    <SignalCheckComponent maxoutputlength="200" output="" falseoutput="" targetsignal="1" pickingtime="0" canbepicked="False" allowingameediting="True" msg="" />
+  <Item name="" identifier="signalcheckcomponent" ID="39" rect="-272,103,15,13" noninteractable="False" nonplayerteaminteractable="False" allowswapping="True" rotation="0" scale="0.5" spritecolor="255,0,255,255" inventoryiconcolor="255,255,255,255" containercolor="255,255,255,255" condition="100" invulnerabletodamage="False" tags="smallitem,logic" displaysidebysidewhenlinked="False" disallowedupgrades="" spritedepth="0.8" hiddeningame="False">
+    <SignalCheckComponent maxoutputlength="{{caption_data_length}}" output="" falseoutput="" targetsignal="1" pickingtime="0" canbepicked="False" allowingameediting="False" msg="" />
     <Holdable attached="True" holdpos="0,0" holdangle="0" swingamount="0,0" swingspeed="0" swingwhenholding="False" swingwhenaiming="False" swingwhenusing="False" pickingtime="5" canbepicked="True" allowingameediting="True" msg="ItemMsgDetachWrench">
       <requireditem items="wrench" type="Equipped" optional="false" ignoreineditor="false" excludebroken="true" />
     </Holdable>
@@ -435,7 +437,7 @@
     </ConnectionPanel>
   </Item>
   <Item name="" identifier="regexcomponent" ID="40" rect="-272,119,15,13" noninteractable="False" nonplayerteaminteractable="False" allowswapping="True" rotation="0" scale="0.5" spritecolor="255,255,255,255" inventoryiconcolor="255,255,255,255" containercolor="255,255,255,255" condition="100" invulnerabletodamage="False" tags="smallitem,logic" displaysidebysidewhenlinked="False" disallowedupgrades="" spritedepth="0.8" hiddeningame="False">
-    <RegExFindComponent maxoutputlength="200" output="out" usecapturegroup="True" falseoutput="" continuousoutput="False" expression="CAPTION_PATTERN" pickingtime="0" canbepicked="False" allowingameediting="True" msg="" />
+    <RegExFindComponent maxoutputlength="{{caption_data_length}}" output="out" usecapturegroup="True" falseoutput="" continuousoutput="False" expression="^(?&gt;[^ ]* )(?&gt;(?&lt;out&gt;[^;]*);)" pickingtime="0" canbepicked="False" allowingameediting="True" msg="" />
     <Holdable attached="True" holdpos="0,0" holdangle="0" swingamount="0,0" swingspeed="0" swingwhenholding="False" swingwhenaiming="False" swingwhenusing="False" pickingtime="5" canbepicked="True" allowingameediting="True" msg="ItemMsgDetachWrench">
       <requireditem items="wrench" type="Equipped" optional="false" ignoreineditor="false" excludebroken="true" />
     </Holdable>
@@ -464,7 +466,7 @@
     </ConnectionPanel>
   </Item>
   <Item name="" identifier="regexcomponent" ID="42" rect="-288,119,15,13" noninteractable="False" nonplayerteaminteractable="False" allowswapping="True" rotation="0" scale="0.5" spritecolor="255,255,255,255" inventoryiconcolor="255,255,255,255" containercolor="255,255,255,255" condition="100" invulnerabletodamage="False" tags="smallitem,logic" displaysidebysidewhenlinked="False" disallowedupgrades="" spritedepth="0.8" hiddeningame="False">
-    <RegExFindComponent maxoutputlength="200" output="out" usecapturegroup="True" falseoutput="" continuousoutput="False" expression="CAPTION_REMOVER" pickingtime="0" canbepicked="False" allowingameediting="True" msg="" />
+    <RegExFindComponent maxoutputlength="{{caption_data_length}}" output="out" usecapturegroup="True" falseoutput="1000000 ;" continuousoutput="False" expression="^(?&gt;[^;]*;)(?&lt;out&gt;.*)$" pickingtime="0" canbepicked="False" allowingameediting="True" msg="" />
     <Holdable attached="True" holdpos="0,0" holdangle="0" swingamount="0,0" swingspeed="0" swingwhenholding="False" swingwhenaiming="False" swingwhenusing="False" pickingtime="5" canbepicked="True" allowingameediting="True" msg="ItemMsgDetachWrench">
       <requireditem items="wrench" type="Equipped" optional="false" ignoreineditor="false" excludebroken="true" />
     </Holdable>
@@ -480,7 +482,7 @@
     </ConnectionPanel>
   </Item>
   <Item name="" identifier="regexcomponent" ID="43" rect="-256,119,15,13" noninteractable="False" nonplayerteaminteractable="False" allowswapping="True" rotation="0" scale="0.5" spritecolor="255,255,255,255" inventoryiconcolor="255,255,255,255" containercolor="255,255,255,255" condition="100" invulnerabletodamage="False" tags="smallitem,logic" displaysidebysidewhenlinked="False" disallowedupgrades="" spritedepth="0.8" hiddeningame="False">
-    <RegExFindComponent maxoutputlength="200" output="out" usecapturegroup="True" falseoutput="" continuousoutput="False" expression="CAPTION_COUNT_PATTERN" pickingtime="0" canbepicked="False" allowingameediting="True" msg="" />
+    <RegExFindComponent maxoutputlength="200" output="out" usecapturegroup="True" falseoutput="" continuousoutput="True" expression="^(?&gt;[^;]*;)(?&lt;out&gt;\d+)" pickingtime="0" canbepicked="False" allowingameediting="True" msg="" />
     <Holdable attached="True" holdpos="0,0" holdangle="0" swingamount="0,0" swingspeed="0" swingwhenholding="False" swingwhenaiming="False" swingwhenusing="False" pickingtime="5" canbepicked="True" allowingameediting="True" msg="ItemMsgDetachWrench">
       <requireditem items="wrench" type="Equipped" optional="false" ignoreineditor="false" excludebroken="true" />
     </Holdable>
@@ -558,6 +560,10 @@
   <Item name="" identifier="bluewire" ID="60" rect="-274,107,42,16" noninteractable="False" nonplayerteaminteractable="False" allowswapping="True" rotation="0" scale="0.5" spritecolor="51,121,173,255" inventoryiconcolor="51,121,173,255" containercolor="255,255,255,255" condition="100" invulnerabletodamage="False" tags="smallitem,wire" displaysidebysidewhenlinked="False" disallowedupgrades="" spritedepth="0.55" hiddeningame="False">
     <Holdable holdpos="0,0" holdangle="0" swingamount="0,0" swingspeed="0" swingwhenholding="False" swingwhenaiming="False" swingwhenusing="False" pickingtime="0" canbepicked="True" allowingameediting="True" msg="ItemMsgPickUpSelect" />
     <Wire noautolock="False" usespritedepth="False" pickingtime="0" canbepicked="False" allowingameediting="True" msg="" nodes="-248.5;96.5;-248.5;112.5" />
+  </Item>
+  <Item name="" identifier="greenwire" ID="61" rect="-271,89,42,16" noninteractable="False" nonplayerteaminteractable="False" allowswapping="True" rotation="0" scale="0.5" spritecolor="56,143,111,255" inventoryiconcolor="56,143,111,255" containercolor="255,255,255,255" condition="100" invulnerabletodamage="False" tags="smallitem,wire" displaysidebysidewhenlinked="False" disallowedupgrades="" spritedepth="0.55" hiddeningame="False">
+    <Holdable holdpos="0,0" holdangle="0" swingamount="0,0" swingspeed="0" swingwhenholding="False" swingwhenaiming="False" swingwhenusing="False" pickingtime="0" canbepicked="True" allowingameediting="True" msg="ItemMsgPickUpSelect" />
+    <Wire noautolock="False" usespritedepth="False" pickingtime="0" canbepicked="False" allowingameediting="True" msg="" nodes="-248.5;81;-264.5;81.5" />
   </Item>
   {{/caption_enabled}}
   {{#relay_comp}}

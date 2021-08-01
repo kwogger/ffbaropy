@@ -2,28 +2,33 @@
 import chevron
 import collections
 import ffmpeg
+import math
 import re
+import srt
 import struct
 
 INPUT_PATH = 'bee.mp4'
 PROOF_PATH = 'proof.mp4'
 DICT_PATTERN_PATH = 'dict.txt'
 ITEM_ASSEMBLY_TEMPLATE = 'oled.mustache'
+SUBTITLE_PATH = 'bee.srt'
 
 WIDTH = 32
 HEIGHT = 18
 FRAMERATE = 8
 
-RESERVED_XML_CHARS = '<>&"\''
-ALPHABET = [chr(i) for i in range(32, 127) if chr(i) not in RESERVED_XML_CHARS]
-RESERVED_REGEX_CHARS = '.+*?^$()[]{}|\\'
-REGEX_X_OFFSET = -192
-REGEX_Y_OFFSET = 103
+COMPONENT_ID_OFFSET = 62
+MAX_FRAMES = 16777216
 LIGHT_X_OFFSET = -192
 LIGHT_Y_OFFSET = 103
-MAX_FRAMES = 16777216
+REGEX_X_OFFSET = -192
+REGEX_Y_OFFSET = 103
+RESERVED_REGEX_CHARS = '.+*?^$()[]{}|\\'
+RESERVED_XML_CHARS = '<>&"\''
+
+ALPHABET = [chr(i) for i in range(32, 127) if chr(i) not in RESERVED_XML_CHARS]
+BUFFER_SIZE = FRAMERATE * WIDTH * HEIGHT * 60
 FRAME_SIZE = WIDTH * HEIGHT
-BUFFER_SIZE = FRAMERATE * FRAME_SIZE * 60
 
 template = {
     'filename': 'oled_%s' % (re.match('^(.*)\\..{3}$', INPUT_PATH).group(1),),
@@ -38,11 +43,9 @@ template = {
     'buffer_pattern': '^(?<out>.{%d,%d})' % (FRAME_SIZE, BUFFER_SIZE),
     'buffer_remover_pattern': '^.{%d}(?<out>.+)' % BUFFER_SIZE,
     'frame_empty_pattern': '^.{%d}$' % FRAME_SIZE,
-    'caption_enabled': False,
+    'caption_enabled': SUBTITLE_PATH is not None,
 }
 
-
-COMPONENT_ID_OFFSET = 61
 relays = []
 regexs = []
 lights = []
@@ -229,6 +232,16 @@ template['px_lib'] = ''.join(
         for px, char in px_dict.items()]
 )
 template['px_lib_length'] = len(template['px_lib'])
+
+if SUBTITLE_PATH is not None:
+    print('> Parsing subtitles')
+    with open(SUBTITLE_PATH, 'r+') as f:
+        subtitle_data = srt.parse(f.read(), ignore_errors=True)
+    template['caption_data'] = ';' + ''.join(['%d %s;' % (
+        math.floor(subtitle.start.total_seconds() * FRAMERATE),
+        subtitle.content.replace(';', '_').replace('\n', ' ')
+    ) for subtitle in subtitle_data])
+    template['caption_data_length'] = len(template['caption_data'])
 
 
 print('> Generating components and wiring')
