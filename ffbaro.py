@@ -7,14 +7,16 @@ import re
 import srt
 import struct
 
-INPUT_PATH = 'bee.mp4'
+INPUT_PATH = 'rickroll.mp4'
 PROOF_PATH = 'proof.mp4'
 DICT_PATTERN_PATH = 'dict.txt'
 ITEM_ASSEMBLY_TEMPLATE = 'oled.mustache'
-SUBTITLE_PATH = 'bee.srt'
+SUBTITLE_PATH = 'rickroll.srt'
 
-WIDTH = 32
-HEIGHT = 18
+# WIDTH = 32
+# HEIGHT = 18
+WIDTH = 28
+HEIGHT = 21
 FRAMERATE = 8
 
 COMPONENT_ID_OFFSET = 62
@@ -220,7 +222,7 @@ px_dict = dict(
 
 print('> Writing video data')
 template['vid_data'] = ''.join(
-    [px_dict[px] for px in struct.iter_unpack('BBB', rgb_raw)])
+    [px_dict[px] for px in struct.iter_unpack('BBB', rgb_raw)]) + '&'
 template['vid_data_length'] = len(template['vid_data'])
 assert len(template['vid_data']) <= (MAX_FRAMES * WIDTH * HEIGHT)
 

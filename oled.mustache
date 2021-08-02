@@ -466,7 +466,7 @@
     </ConnectionPanel>
   </Item>
   <Item name="" identifier="regexcomponent" ID="42" rect="-288,119,15,13" noninteractable="False" nonplayerteaminteractable="False" allowswapping="True" rotation="0" scale="0.5" spritecolor="255,255,255,255" inventoryiconcolor="255,255,255,255" containercolor="255,255,255,255" condition="100" invulnerabletodamage="False" tags="smallitem,logic" displaysidebysidewhenlinked="False" disallowedupgrades="" spritedepth="0.8" hiddeningame="False">
-    <RegExFindComponent maxoutputlength="{{caption_data_length}}" output="out" usecapturegroup="True" falseoutput="1000000 ~" continuousoutput="False" expression="^(?&gt;[^~]*~)(?&lt;out&gt;.*)$" pickingtime="0" canbepicked="False" allowingameediting="True" msg="" />
+    <RegExFindComponent maxoutputlength="{{caption_data_length}}" output="out" usecapturegroup="True" falseoutput="1000000 ~" continuousoutput="False" expression="^(?&gt;[^~]*~)(?&lt;out&gt;.+)$" pickingtime="0" canbepicked="False" allowingameediting="True" msg="" />
     <Holdable attached="True" holdpos="0,0" holdangle="0" swingamount="0,0" swingspeed="0" swingwhenholding="False" swingwhenaiming="False" swingwhenusing="False" pickingtime="5" canbepicked="True" allowingameediting="True" msg="ItemMsgDetachWrench">
       <requireditem items="wrench" type="Equipped" optional="false" ignoreineditor="false" excludebroken="true" />
     </Holdable>
