@@ -237,10 +237,13 @@ if SUBTITLE_PATH is not None:
     print('> Parsing subtitles')
     with open(SUBTITLE_PATH, 'r+') as f:
         subtitle_data = srt.parse(f.read(), ignore_errors=True)
-    template['caption_data'] = ';' + ''.join(['%d %s;' % (
+    template['caption_data'] = '~' + ''.join(['%d %s~' % (
         math.floor(subtitle.start.total_seconds() * FRAMERATE),
-        subtitle.content.replace(';', '_').replace('\n', ' ')
-    ) for subtitle in subtitle_data])
+        text
+    )
+        for subtitle in subtitle_data
+        for text in subtitle.content.replace('~', '-').split('\n')
+    ])
     template['caption_data_length'] = len(template['caption_data'])
 
 
